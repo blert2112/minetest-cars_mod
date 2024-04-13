@@ -1,3 +1,5 @@
+-- NOTE: this file may be outdated.
+
 local name = "car_template"				-- mod name of vehicle
 
 local definition = {

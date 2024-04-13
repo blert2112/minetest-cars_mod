@@ -95,22 +95,8 @@ else
 		recipe = nil
 	}
 
-	local car01_names = {
-		"black", "blue", "brown", "cyan",
-		"dark_green", "dark_grey", "green",
-		"grey", "magenta", "orange",
-		"pink", "red", "violet",
-		"white", "yellow", "hot_rod",
-		"nyan_ride", "oerkki_bliss", "road_master",
-	}
-
-	-- Load all CAR01's cars if enabled
-	for _, name in ipairs(car01_names) do
-		local check_enabled = minetest.settings:get_bool("vehicle_mash.enable_" .. name .. "_car")
-		if check_enabled or check_enabled == nil then
-			loadfile(mpath .. "/car01s/" .. name .. ".lua")(table.copy(car01_def))
-		end
-	end
+	-- Load CAR01.
+	loadfile(mpath .. "/vehicles/car01.lua")(table.copy(car01_def))
 
 	-- ** MeseCars **
 	------------------------------------------------------------------------------
@@ -154,20 +140,8 @@ else
 		recipe = nil
 	}
 
-	local mesecar_names = {
-		"mese_blue",
-		"mese_pink",
-		"mese_purple",
-		"mese_yellow",
-	}
-
-	-- Load all Mese Cars if enabled
-	for _, name in ipairs(mesecar_names) do
-		local check_enabled = minetest.settings:get_bool("vehicle_mash.enable_" .. name .. "_car")
-		if check_enabled or check_enabled == nil then
-			loadfile(mpath .. "/mesecars/" .. name .. ".lua")(table.copy(mesecar_def))
-		end
-	end
+	-- Load Mesecar.
+	loadfile(mpath .. "/vehicles/mesecar.lua")(table.copy(mesecar_def))
 
 	-- ** Boats **
 	------------------------------------------------------------------------------
@@ -206,18 +180,8 @@ else
 		-- armor = 25,
 	}
 
-	local boat_names = {
-		"boat",
-		"rowboat",
-	}
-
-	-- Load boats if enabled
-	for _, name in ipairs(boat_names) do
-		local check_enabled = minetest.settings:get_bool("vehicle_mash.enable_" .. name)
-		if check_enabled or check_enabled == nil then
-			loadfile(mpath .. "/boats/" .. name .. ".lua")(table.copy(boat_def))
-		end
-	end
+	-- Load boats.
+	loadfile(mpath .. "/vehicles/boats.lua")(table.copy(boat_def))
 
 	-- ** Hovercraft **
 	------------------------------------------------------------------------------
@@ -260,23 +224,6 @@ else
 		recipe = nil
 	}
 
-	local hover_names = {
-		"hover_blue",
-		"hover_green",
-		"hover_red",
-		"hover_yellow",
-	}
-
-	-- Load hovercrafts if enabled
-	for _, name in ipairs(hover_names) do
-		local check_enabled = minetest.settings:get_bool("vehicle_mash.enable_" .. name)
-		if check_enabled or check_enabled == nil then
-			loadfile(mpath .. "/hovers/" .. name .. ".lua")(table.copy(hover_def))
-		end
-	end
+	-- Load Hovercraft.
+	loadfile(mpath .. "/vehicles/hovercraft.lua")(table.copy(hover_def))
 end
-
--- free unneeded global(s)
-core.after(10, function()
-	vehicle_mash.register_vehicle = nil
-end)

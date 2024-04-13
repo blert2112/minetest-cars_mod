@@ -1,6 +1,6 @@
 unused_args = false
 allow_defined_top = true
-max_line_length = 999
+max_line_length = false
 
 globals = {
     "vehicle_mash", "player_api",
